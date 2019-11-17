@@ -6,8 +6,8 @@ ABOUT THE FOLDERS
 
 (1) /scg_test 
 
-This main project for demonstration for parts of API(Back-end) and UI(front-end)
-following the requirements of the test.
+This main project for demonstration for the parts of API(Back-end) and UI(front-end)
+following the requirements from SCG.
 
 #How to start webserver and test.
 
