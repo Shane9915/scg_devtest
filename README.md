@@ -40,4 +40,8 @@ hosting for live test for you.
 As for project detail you can read in (1) /scg_test in the part of number 3
 
 
+Best Regards,
+Seri Serirom (Shane)
+Email: shane.seriserirom@outlook.com
+Mobile: (+66)81-5669346
 
