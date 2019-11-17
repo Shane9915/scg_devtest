@@ -21,9 +21,11 @@ Instruction
   1. Copy folder /scg_test into your machine
 
   2. Change current folder into scg_test folder
+  
       /> cd scg_test
 
   3. Start NodeJs Webserver with ExpressJS by using command "npm start"
+  
       /scg_test> npm start
 
   4. Open your browser and go to URL:  
