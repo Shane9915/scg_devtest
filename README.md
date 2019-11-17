@@ -9,7 +9,7 @@ ABOUT THE FOLDERS
 This main project for demonstration for the parts of API(Back-end) and UI(front-end)
 following the requirements from SCG.
 
-#How to start webserver and test.
+#How to start webserver and check my test.
 
 Prerequisite
 - NodeJS installation on your machine. 
