@@ -1,5 +1,5 @@
 # scg_devtest
-This source code is my dev tech test for applying a SCG's dev tech position following the requirements from SCG.
+This source code is my dev tech test for applying a SCG's dev tech position following the test requirements from SCG.
 
 ABOUT THE FOLDERS
 ------------------------------------------------------------------------------------------------
