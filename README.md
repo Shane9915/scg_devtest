@@ -10,7 +10,7 @@ ABOUT THE FOLDERS
 This main project for demonstration for parts of API(Back-end) and UI(front-end)
 
 
-#How to start webserver and view the test
+#How to start webserver and test.
 
 Prerequisite
 - NodeJS installation on your machine. 
