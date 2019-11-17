@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <title><%= title %></title>
+   <link rel='stylesheet' href='/stylesheets/bootstrap_v4.1.1.css' />
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <script src="/javascripts/bootstrap-native-v4.min.js" defer></script>
+   <script src="/javascripts/vue.min.js"></script>
+   <script src="/javascripts/vue-router.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+   
+</head>
+<body>
+
+<%- include('_topmenu') -%>
+
+<div class="bg-light pt-3">
+   <div class="container d-flex flex-column pt-5">
+         <div class="row my-auto my-5 pt-5 pb-4">
+            <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+               <h1 class="mb-2 font-weight-normal">Google PlaceSearch Sample</h1>
+               <p class="lead">This is a sample of using "Google Place Search API” for finding all restaurants in Bang Sue area and return the results in JSON format.
+               <br><br>I use free google account that has a limitation of only few api requests per day, so that this sample will not freely open for searching any other area
+               but for showing a sample of using the Google PlaceSearch API for restaurants in only Bang Sue instead.
+               <br><br>
+               Because of the limitation of only few api requests per day, I also make a cache for Google Place Search API's result data
+               and store it in the file name "googledata.json" so that if you want my code to request to Google API again then you can remove that data cache file.
+               <br><br>
+               I provide UI to use my function API as bellowed, and also raw API that you can call it directly if you want.
+               For example:
+               <br>http://localhost:3000/scg/api/googleplacesearch
+               </p>
+            </div>
+         </div>
+   </div>
+</div>
+<div class="pt-5 pb-5 mb-2">
+   <div class="container pt-3">
+         <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+
+               <div id="vue_app">
+                  <h3 class="h4 mb-3">Find Restaurants By Using Google Place Search API</h3>
+                  <p class="lead mb-4 text-secondary mr-5">
+
+                     Please note that I will fix only for searching in Bang Sue because of limitation of few API requests per day from Google.<br>
+                     <form onsubmit="return false;">
+                        <div>
+                           <input v-model="searchparam" type="text" name="area" value="" readonly style="width:100%; max-width:300px;">
+                           <button type="button" v-on:click="PlaceSearch">Search</button>
+                           <button type="button" v-on:click="ClearInput">Clear</button>
+                        </div>
+                        <div><small></small></div>
+                     </form>
+                  </p>
+                  
+                  <div id="vue_result">
+                     <div v-if=" submit_click == 1 ">
+
+                        <div>
+                           <b>RESULTS:</b>
+                        </div>
+
+                        <div style="padding:10px;">
+                           
+                           <div v-if="search_results.length">
+                              <table class="table table-striped" style="max-width:600px;">
+                              <thead>
+                                 <tr>
+                                    <th scope="col" width="5%">#</th>
+                                    <th scope="col" width="95%">{{ searchparam }}</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr v-for="(place_el, index) in search_results">
+                                    <td scope="row" style="font-size:smaller;padding:2px;">{{ index+1 }})</td>
+                                    <td style="padding:2px;">
+                                       <div style="font-size:smaller;"><b>{{ place_el.name }}</b></div>
+                                       <div style="font-size:smaller;">{{ place_el.address }}</div>
+                                    </td>
+                                 </tr>
+                              </tbody>
+                              </table>
+                           </div>
+                        </div>
+
+                     </div>
+                  </div>
+
+               </div>             
+
+            </div>
+         </div>
+   </div>
+</div>
+
+
+<%- include('_footer') -%>
+
+
+<script type="text/javascript">
+var app = new Vue({
+   el: '#vue_app',
+   data: {
+      submit_click: 0,
+      searchparam: 'restaurants in Bang Sue',
+      search_results: []
+   },
+   methods: {
+      PlaceSearch: function () {
+         var config = {
+            headers: { 'Content-Type': 'application/json' }
+         };
+         axios.post( 'http://localhost:3000/scg/api/googleplacesearch'
+            , { "searchparam": this.searchparam }
+            , config
+         )
+         .then((response) => { return response.data })
+         .then((resdata) => {
+            console.log(resdata)
+            this.submit_click = 1;
+            this.search_results = resdata      
+         })
+         .catch(error => {console.log(error)});
+      },
+      ClearInput: function () {
+         this.submit_click = 0;
+         this.search_results= [];
+      }
+   }
+})
+</script>
+
+      
+</body>
+</html>

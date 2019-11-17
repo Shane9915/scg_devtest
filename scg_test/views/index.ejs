@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <title><%= title %></title>
+   <link rel='stylesheet' href='/stylesheets/bootstrap_v4.1.1.css' />
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <script src="/javascripts/bootstrap-native-v4.min.js" defer></script>
+   
+</head>
+<body>
+
+<%- include('_topmenu') -%>
+
+   <div class="bg-light pt-3">
+      <div class="container d-flex flex-column pt-5">
+            <div class="row my-auto my-5 pt-5 pb-4">
+               <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+                  <h1 class="mb-2 font-weight-normal">My Technical Test </h1>
+                  <p class="lead">This my technical test about testing programming languages skills, learning skills 
+                     and challenged problems solving with computer programming, 
+                     is for applying a SCG's developer position.
+                  </p>
+               </div>
+            </div>
+      </div>
+   </div>
+   <div class="pt-5 pb-5 mb-2">
+      <div class="container pt-3">
+            <div class="row">
+               <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                  <h3 class="h4 mb-3">About Technical Test</h3>
+                  <p class="lead mb-4 text-secondary mr-5">
+                     This technical skills test consists 2 parts of back-end (API) and front-end development test. 
+                     As for programming languages on this test, I choose <mark>"NodeJs+ExpressJs"</mark> for Back-end development and 
+                     <mark>"VueJs+Bootstrap4"</mark> for Front-end development.
+                  </p>
+                  
+                  <br>
+                  <h3 class="h4 mb-3">Back-end (API) Problems</h3>
+                  <p class="lead mb-4 text-secondary">I choose Express(Node.JS) for this test</p>
+                  <p class="">
+                        Create a new controller called “SCG” and coding for solving these following problems
+                        <ol style="margin-top:-10px;padding-left:20px;padding-top:0px;">
+                           <li style="margin-bottom: 5px;"><b>Sequence Solver: </b><br>
+                              such as  X, 5, 9, 15, 23, Y, Z  - Please create a new function for finding X, Y, Z value
+                           </li>
+                           <li style="margin-bottom: 5px;"><b>Google PlaceSearch API Sample: </b><br>
+                              Please use “Place search|Place API(by Google)” for finding all restaurants in Bangsue area and show result by JSON
+                           </li>
+                           <li style="margin-bottom: 5px;"><b>Line messaging bot API (Up to you): </b><br>
+                              Please create one small project for Line messaging API(Up to you), contain a flow diagram, your code, and database.
+                           </li>
+                        </ol>  
+                        ** Make sure you have a cache for every function **
+                  </p>
+
+                  <br>
+                  <h3 class="h4 mb-3">Front-end (WEB) Problems</h3>
+                  <p class="lead mb-4 text-secondary">I choose Vue.JS V3+Bootstrap V4  for this test</p>
+                  <p class="">
+                        <ul style="margin-top:-20px;padding-left:20px;padding-top:0px;">
+                           <li style="margin-bottom: 5px;">Create a new router called “SCG”</li>
+                           <li style="margin-bottom: 5px;">X, 5, 9, 15, 23, Y, Z  - Please create a new function for finding X, Y, Z value</li>
+                           <li style="margin-bottom: 5px;">Please use Bootstrap V4 for CSS</li>
+                           <li style="margin-bottom: 5px;">Please create Top bar, body, and footer for every page components</li>
+                           <li style="margin-bottom: 5px;">Please create a new page for showing results from your APIs</li>
+                           <li style="margin-bottom: 5px;">One simple static page for your CV</li>
+                        </ul>  
+                        ** Make sure you have a cache or local storage for every function **
+                  </p>
+
+               </div>
+            </div>
+      </div>
+   </div>
+
+
+   <%- include('_footer') -%>
+
+        
+
+      
+</body>
+</html>

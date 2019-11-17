@@ -1,0 +1,4 @@
+#How to run on local computer
+
+Open terminal and then
+(1) npm app

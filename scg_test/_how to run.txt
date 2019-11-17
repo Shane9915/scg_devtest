@@ -1,0 +1,4 @@
+Open terminal
+
+(1) cd /scg_test
+(2) npm start

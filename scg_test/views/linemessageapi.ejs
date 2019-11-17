@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <title><%= title %></title>
+   <link rel='stylesheet' href='/stylesheets/bootstrap_v4.1.1.css' />
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <script src="/javascripts/bootstrap-native-v4.min.js" defer></script>
+   
+</head>
+<body>
+
+      <%- include('_topmenu') -%>
+
+        <div class="bg-light pt-3">
+            <div class="container d-flex flex-column pt-5">
+                <div class="row my-auto my-5 pt-5 pb-4">
+                    <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+                        <h1 class="mb-2 font-weight-normal">Line Message Bot API</h1>
+                        <p class="lead">This is a sample little project to use Line Message Bot API.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pt-5 pb-5 mb-2">
+            <div class="container pt-3">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                                                
+                        <h3 class="h4 mb-3">My Line Message Bot Service</h3>
+                        <p class="lead mb-4 text-secondary mr-5">
+                           I design a simple bot service using Line Message Api for helping our daily tasks, is called <mark>"Event/Meeting Assistant"</mark>
+                           that will tell you about what Event/Meetings that you will have to do on today and tomorrow.
+                        </p>
+                        <p class="lead mb-4 text-secondary mr-5">
+                           After join line friend to this Bot, you can ask bot with specific words then the bot will call webhook to my API service
+                           for answering, that API service is written in NodeJS programming language and hosting live on Heroku free hosting for real test for you as well.
+                           <BR><BR>
+                           I design this simple service to do something different and more than getting fixed response messages for each specific word that Line Backoffice 
+                           can only do. Then I write the service to find what today date and day of week 
+                           and then use that day of week to query for the list of events/meetings of the user.
+                        </p>
+
+                        <br> 
+                        <h3 class="h4 mb-3">To Use Line Bot Service</h3>
+                        <ol style="margin-top:5px;padding-left:20px;padding-top:0px;">
+                           <li style="margin-bottom:10px;font-size:;"><b>Add friend to Bot Service <mark>"SCG_Assistant"</mark> by QR Code: </b>
+                              <br><br>
+                              <img src="/images/linebot_qrcode.jpg">
+                           </li>
+                           <li style="margin-bottom:10px;font-size:;"><b>Asking Bot with Specific words: </b>
+                              <ul style="margin-top:0px;padding-left:20px;padding-top:0px;">
+                                    <li><b>assistant</b>
+                                       <br> The bot will reply you greetingly and tell what you can ask to him.
+                                    </li>
+                                    <li><b>today events</b>
+                                       <br> The bot will reply you about what your events/meetings and time on today.
+                                    </li>
+                                    <li><b>tomorrow events</b>
+                                       <br> The bot will reply you about what your events/meetings and time on tomorrow.
+                                    </li>
+                                 </ul>  
+                              </li>
+                        </ol>  
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <%- include('_footer') -%>
+
+        
+
+      
+</body>
+</html>

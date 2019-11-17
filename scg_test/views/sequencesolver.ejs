@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+   <title><%= title %></title>
+   <link rel='stylesheet' href='/stylesheets/bootstrap_v4.1.1.css' />
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <script src="/javascripts/bootstrap-native-v4.min.js" defer></script>
+   <script src="/javascripts/vue.min.js"></script>
+   <script src="/javascripts/vue-router.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+   
+</head>
+<body>
+
+      <%- include('_topmenu') -%>
+
+        <div class="bg-light pt-3">
+            <div class="container d-flex flex-column pt-5">
+                <div class="row my-auto my-5 pt-5 pb-4">
+                    <div class="col-lg-8 col-md-8 col-sm-12 mx-auto">
+                        <h1 class="mb-2 font-weight-normal">Sequence Solver</h1>
+                        <p class="lead">This is a function for finding value of any variables missing in the sequence such as <BR>
+                           "X, 5, 9, 15, 23, Y, Z" this function will find what variables "X,Y,Z" in the sequence and their missing values. 
+                           <BR><BR>
+                           My solution is to form answer as F(x) in <mark>"Polynomial formula"</mark> in maximum and the best of polynomial terms that depends on 
+                           amount of existing numbers in the sequence and then I solve Polynomial formula by using <mark>"Matrix Determinant"</mark>
+                           in order to find <mark>coefficients of polynomial formula</mark>. Finally, I use the Polynomial formula to find missing value of the variables.
+                           <BR><BR>
+                           I provide UI to use my function API as bellowed, and raw API also that you can call it directly if you want. For example:
+                           <BR>http://localhost:3000/scg/api/sequencesolver/X,5,9,15,23,Y,Z
+                           <BR>http://localhost:3000/scg/api/sequencesolver/John,5,Doh,15,23,33,Bob,59,Marry,93,Tom
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pt-5 pb-5 mb-2">
+            <div class="container pt-3">
+                <div class="row">
+                    <div class="col-lg-8 col-md-10 col-sm-12 mx-auto">
+                       
+                        <div id="vue_app">
+                           <h3 class="h4 mb-3">Find Missing Value of Variables of Your Sequence</h3>
+                           <p class="lead mb-4 text-secondary mr-5">
+
+                              Please input any a "sequence" with mixing some variables.<br>
+                              Example: <mark>X,5,9,15,23,Y,Z</mark>  or <mark>John,5,Doh,15,23,33,Bob,59,Marry,93,Tom</mark>
+                              <form onsubmit="return false;">
+                                 <div>
+                                    <div>
+                                       <b>INPUT:</b>
+                                    </div>
+                                    <input v-model="input_sequence" type="text" name="sequence" value="" style="width:100%; max-width:300px;">
+                                    <button type="button" v-on:click="SequenceSolver(input_sequence)">Submit</button>
+                                    <button type="button" v-on:click="ClearInputSequence">Clear</button>
+                                 </div>
+                                 <div><small></small></div>
+                              </form>
+                           </p>
+                           
+                           <div id="vue_result">
+                              <div v-if=" sequence != '' ">
+
+                                 <div>
+                                    <b>SOLVING:</b>
+                                 </div>
+
+                                 <div style="padding:10px;">
+                                    <b>Input Sequence:</b> {{ sequence }}
+                                    
+                                    <div v-if="variable_list.length">
+                                       <b>Variables found:</b> {{ variable_list.length }} variables.
+                                    </div>
+                                    <div v-if="variable_list.length">
+                                       <BR>
+                                       <table class="table table-striped" style="max-width:300px;">
+                                       <thead>
+                                          <tr>
+                                             <th scope="col" width="10%">#</th>
+                                             <th scope="col" width="30%">Variable</th>
+                                             <th scope="col" width="60%">Missing Value</th>
+                                          </tr>
+                                       </thead>
+                                       <tbody>
+                                          <tr v-for="(variable_el, index) in variable_list">
+                                             <td scope="row">{{ index+1 }})</td>
+                                             <td>{{ variable_el.variable }}</td>
+                                             <td>{{ variable_el.value }}</td>
+                                          </tr>
+                                       </tbody>
+                                       </table>
+                                    </div>
+                                 </div>
+
+                              </div>
+                           </div>
+
+                           
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <%- include('_footer') -%>
+
+        
+<script type="text/javascript">
+var app = new Vue({
+   el: '#vue_app',
+   data: {
+      input_sequence: 'X,5,9,15,23,Y,Z',
+      sequence: '',
+      variable_list: []
+   },
+   methods: {
+      SequenceSolver: function (inputdata) {
+         var config = {
+            headers: { 'Content-Type': 'application/json' }
+         };
+         axios.post( 'http://localhost:3000/scg/api/sequencesolver'
+            , { "sequence": inputdata }
+            , config
+         )
+         .then((response) => { return response.data })
+         .then((data) => {
+            //console.log(data)
+            this.sequence = inputdata
+            this.variable_list = data      
+         })
+         .catch(error => {console.log(error)});
+      },
+      ClearInputSequence: function () {
+         this.input_sequence = '';
+         this.SequenceSolver('');
+      }
+   }
+})
+</script>
+      
+</body>
+</html>

@@ -1,0 +1,35 @@
+
+INSTRUCTION
+------------------------------------------------------------------------------------------------
+
+(1) /scg_test 
+
+This main project for demonstration for parts of API(Back-end) and UI(front-end)
+
+#How to start webserver and view the test
+
+Prerequisite
+- NodeJS installation on your machine. 
+  To download nodejs and follow installation instruction at https://nodejs.org/en/download/
+
+Instruction
+
+  1. Copy source code of /scg_test into your machine
+
+  2. Move into scg_test folder
+      /> cd scg_test
+
+  3. Start NodeJs Webserver with ExpressJS by using command "npm start"
+      /scg_test> npm start
+
+  4. Open browser and access URL:  
+      http://localhost:3000
+
+
+(2) /scg_lineapi
+
+This is source code of  Line message bot API that I also uploaded to Heroku 
+hosting for live test for you.
+As for project detail you can read in (1) /scg_test in the part of number 3
+
+
